@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imbila.AI — Daily Intel</title>
+  <meta name="description" content="Daily AI intelligence from Imbila.AI — model releases, platform changes, research, and what it means for the 2nth.ai stack and partners.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Barlow',sans-serif;background:#fafafa;color:#52525b;line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:#0f766e;text-decoration:none}a:hover{text-decoration:underline}
+    .container{max-width:960px;margin:0 auto;padding:0 24px}
+
+    :root{--imbila:#0f766e;--imbila-light:#ccfbf1;--imbila-dark:#134e4a;--2nth:#06b6d4;--text:#18181b;--text2:#52525b;--text3:#71717a;--muted:#a1a1aa;--border:#e5e7eb;--bg:#fafafa;--bg2:#fff}
+
+    header{background:var(--bg2);border-bottom:1px solid var(--border);padding:18px 0}
+    header .container{display:flex;align-items:center;justify-content:space-between}
+    .logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.06em;color:var(--text);text-decoration:none}
+    .logo span{color:var(--imbila)}
+    nav{display:flex;gap:20px;align-items:center}
+    nav a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);transition:color .15s}
+    nav a:hover{color:var(--imbila);text-decoration:none}
+    nav a.active{color:var(--imbila)}
+    .nav-cta{background:var(--imbila);color:#fff!important;padding:6px 16px;border-radius:6px;font-weight:600}
+    .nav-cta:hover{background:var(--imbila-dark)}
+
+    footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;font-size:12px;color:var(--muted)}
+
+    h1{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:.03em;color:var(--text);line-height:1.05;margin-bottom:12px}
+    h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.02em;color:var(--text);line-height:1.1;margin-bottom:14px}
+    h3{font-size:18px;font-weight:600;color:var(--text);margin:28px 0 10px}
+    .section-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--imbila);margin-bottom:8px}
+    .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:5px;background:rgba(15,118,110,.06);border:1px solid rgba(15,118,110,.15);color:var(--imbila);margin-bottom:20px}
+
+    /* Filters */
+    .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 28px}
+    .filter-btn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--text3);cursor:pointer;transition:all .15s}
+    .filter-btn:hover{border-color:var(--imbila);color:var(--imbila)}
+    .filter-btn.active{background:var(--imbila);color:#fff;border-color:var(--imbila)}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left:28px}
+    .timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:var(--border)}
+    .day-group{margin-bottom:36px;position:relative}
+    .day-marker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--imbila);margin-bottom:14px;position:relative}
+    .day-marker::before{content:'';position:absolute;left:-24px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--imbila);border:3px solid var(--bg)}
+
+    /* Updates */
+    .update{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px 28px 24px;margin-bottom:16px;transition:border-color .15s}
+    .update:hover{border-color:var(--imbila)}
+    .update-date{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+    .update-date .badge{font-size:9px;padding:2px 8px;border-radius:3px;letter-spacing:1px;font-weight:700}
+    .badge-model{background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.15);color:#7c3aed}
+    .badge-platform{background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.15);color:#06b6d4}
+    .badge-partner{background:rgba(15,118,110,.06);border:1px solid rgba(15,118,110,.15);color:#0f766e}
+    .badge-research{background:rgba(217,119,6,.06);border:1px solid rgba(217,119,6,.15);color:#d97706}
+    .update h3{font-size:20px;font-weight:700;color:var(--text);margin:0 0 10px;line-height:1.3}
+    .update p{font-size:14px;color:var(--text3);margin:0 0 12px;line-height:1.65}
+    .update-specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:16px 0}
+    .spec{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 12px;text-align:center}
+    .spec-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--text);line-height:1.1}
+    .spec-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:2px}
+    .update-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+    .update-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.5px;padding:3px 10px;border-radius:4px;background:rgba(15,118,110,.04);border:1px solid rgba(15,118,110,.1);color:var(--imbila)}
+    .update-table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0}
+    .update-table th,.update-table td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--border)}
+    .update-table th{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:600}
+    .update-table td{color:var(--text2)}
+    .update-table code{font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(15,118,110,.04);padding:1px 6px;border-radius:3px}
+    .update-link{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.5px;color:var(--imbila);display:inline-flex;align-items:center;gap:4px}
+    .take{background:rgba(15,118,110,.03);border:1px solid rgba(15,118,110,.1);border-radius:8px;padding:16px 20px;margin:14px 0}
+    .take p{margin:0;font-size:13px;line-height:1.6}
+    .take strong{color:var(--text)}
+
+    /* Compact update card (for secondary items) */
+    .update-compact{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:12px;transition:border-color .15s}
+    .update-compact:hover{border-color:var(--imbila)}
+    .update-compact h3{font-size:16px;margin:0 0 6px}
+    .update-compact p{font-size:13px;margin:0 0 8px}
+
+    /* Stats bar */
+    .stats-bar{display:flex;gap:24px;flex-wrap:wrap;padding:20px 0;margin-bottom:8px}
+    .stats-bar .stat{text-align:center}
+    .stats-bar .stat-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--text)}
+    .stats-bar .stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+
+    @media(max-width:640px){h1{font-size:36px}.update-specs{grid-template-columns:repeat(2,1fr)}.timeline{padding-left:20px}.day-marker::before{left:-16px}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="/" class="logo"><span>IMBILA</span>.AI</a>
+    <nav>
+      <a href="/intel.html" class="active">Daily Intel</a>
+      <a href="/#research">Research</a>
+      <a href="/#education">Education</a>
+      <a href="/#portfolio">Portfolio</a>
+      <a href="https://2nth.ai" class="nav-cta">Build with 2nth.ai</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<div style="padding:60px 0 32px">
+  <div class="container">
+    <div class="hero-tag">Imbila.AI Intelligence</div>
+    <h1>Daily Intel</h1>
+    <p style="font-size:17px;color:var(--text3);max-width:640px;line-height:1.6">What's moving in AI — model releases, platform changes, partner news, and research. Every update includes our take on what it means for the 2nth.ai stack.</p>
+
+    <div class="stats-bar">
+      <div class="stat"><div class="stat-val" id="stat-total">1</div><div class="stat-label">Updates</div></div>
+      <div class="stat"><div class="stat-val" id="stat-models">1</div><div class="stat-label">Model releases</div></div>
+      <div class="stat"><div class="stat-val" id="stat-platform">0</div><div class="stat-label">Platform</div></div>
+      <div class="stat"><div class="stat-val" id="stat-partner">0</div><div class="stat-label">Partner</div></div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterUpdates('all',this)">All</button>
+      <button class="filter-btn" onclick="filterUpdates('model',this)">Model Releases</button>
+      <button class="filter-btn" onclick="filterUpdates('platform',this)">Platform</button>
+      <button class="filter-btn" onclick="filterUpdates('partner',this)">Partner</button>
+      <button class="filter-btn" onclick="filterUpdates('research',this)">Research</button>
+    </div>
+  </div>
+</div>
+
+<!-- Timeline -->
+<div style="padding:0 0 60px">
+<div class="container">
+<div class="timeline">
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 4 APRIL 2026                                               -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="day-group" data-date="2026-04-04">
+    <div class="day-marker">4 April 2026</div>
+
+    <!-- Gemma 4 — full feature update -->
+    <div class="update" data-category="model">
+      <div class="update-date">
+        <span class="badge badge-model">Model Release</span>
+      </div>
+      <h3>Google Gemma 4: Open models go Apache 2.0 with native multimodal and 256K context</h3>
+      <p>Google DeepMind released Gemma 4 — four open-weight models built from the same research behind Gemini 3. The big shift: <strong>Apache 2.0 licence</strong> with no MAU caps, no acceptable-use restrictions, and full commercial freedom. This replaces the restrictive custom licence from Gemma 3.</p>
+
+      <div class="update-specs">
+        <div class="spec"><div class="spec-val">4</div><div class="spec-label">Model sizes</div></div>
+        <div class="spec"><div class="spec-val">256K</div><div class="spec-label">Context (26B/31B)</div></div>
+        <div class="spec"><div class="spec-val">85.2%</div><div class="spec-label">MMLU Pro (31B)</div></div>
+        <div class="spec"><div class="spec-val">89.2%</div><div class="spec-label">AIME 2026 (31B)</div></div>
+        <div class="spec"><div class="spec-val">#3</div><div class="spec-label">Arena AI global rank</div></div>
+        <div class="spec"><div class="spec-val">1.5GB</div><div class="spec-label">E2B quantized</div></div>
+      </div>
+
+      <h3 style="font-size:16px;margin-top:20px">Model lineup</h3>
+      <table class="update-table">
+        <thead><tr><th>Model</th><th>Active params</th><th>Total params</th><th>Context</th><th>Modalities</th></tr></thead>
+        <tbody>
+          <tr><td><code>gemma-4-e2b</code></td><td>2.3B</td><td>5.1B</td><td>128K</td><td>Text, image, audio</td></tr>
+          <tr><td><code>gemma-4-e4b</code></td><td>4.5B</td><td>8B</td><td>128K</td><td>Text, image, audio</td></tr>
+          <tr><td><code>gemma-4-26b</code></td><td>3.8B (MoE)</td><td>25.2B</td><td>256K</td><td>Text, image, video</td></tr>
+          <tr><td><code>gemma-4-31b</code></td><td>30.7B (dense)</td><td>30.7B</td><td>256K</td><td>Text, image, video</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-size:16px;margin-top:20px">What's new</h3>
+      <p><strong>Natively multimodal.</strong> Every variant handles images. The E-series adds audio (speech recognition, translation). The 26B and 31B add video comprehension up to 60s at 1fps. All models include native function calling, structured JSON output, multi-step planning, and configurable extended thinking.</p>
+      <p><strong>Architecture innovations.</strong> Alternating local/global attention layers. Dual RoPE for 256K context without quality loss. Shared KV cache to cut inference memory. Per-Layer Embeddings (PLE) in the E-series give 5B-class quality at 1.5GB quantized.</p>
+      <p><strong>Edge-first.</strong> E2B runs on a Raspberry Pi 5 at 133 tok/s prefill, 7.6 tok/s decode. Supports Android, iOS, WebGPU, Qualcomm NPUs. The 26B MoE achieves 97% of the dense 31B quality while activating only 3.8B params per token.</p>
+
+      <div class="take">
+        <p><strong>Imbila take:</strong> The Apache 2.0 shift is the real news — it makes Gemma 4 viable for sovereign and commercial deployments without legal review. The E2B at 1.5GB is interesting for our IoT and edge-first partners. The 26B MoE hits a sweet spot for self-hosted agent workloads where you want near-frontier quality without H100 budgets. We're evaluating Gemma 4 26B as an alternative inference option for cost-sensitive 2nth.ai skill executions on Cloudflare Workers AI and partner self-hosted deployments.</p>
+      </div>
+
+      <div class="update-tags">
+        <span class="update-tag">Open weights</span>
+        <span class="update-tag">Apache 2.0</span>
+        <span class="update-tag">Multimodal</span>
+        <span class="update-tag">MoE</span>
+        <span class="update-tag">Edge AI</span>
+        <span class="update-tag">Function calling</span>
+        <span class="update-tag">256K context</span>
+      </div>
+
+      <div style="margin-top:16px;display:flex;gap:16px;flex-wrap:wrap">
+        <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/" class="update-link">Google announcement &rarr;</a>
+        <a href="https://deepmind.google/models/gemma/gemma-4/" class="update-link">DeepMind page &rarr;</a>
+        <a href="https://huggingface.co/collections/google/gemma-4-models-68076e017a8d42d3cdbcaad2" class="update-link">Hugging Face &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Platform update — Recall.ai skill -->
+    <div class="update-compact" data-category="platform">
+      <div class="update-date">
+        <span class="badge badge-platform">Platform</span>
+      </div>
+      <h3>New skill: tech/recall-ai — meeting bot API for Zoom, Meet, Teams</h3>
+      <p>Added <code>tech/recall-ai</code> to the 2nth.ai skill tree — a production skill for the Recall.ai meeting bot API. Covers bot lifecycle, recordings, transcripts with speaker diarization, and Svix webhook handling. Includes full API reference, webhook schemas, and transcript guide.</p>
+      <div style="margin-top:8px;display:flex;gap:16px;flex-wrap:wrap">
+        <a href="https://dev.2nth-skills.pages.dev/tech/recall-ai.html" class="update-link">View skill &rarr;</a>
+        <a href="https://github.com/2nth-ai/skills" class="update-link">GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Partner update — B2BS.AI -->
+    <div class="update-compact" data-category="partner">
+      <div class="update-date">
+        <span class="badge badge-partner">Partner</span>
+      </div>
+      <h3>B2BS.AI joins as specialist developer partner</h3>
+      <p>B2BS.AI — an AI-powered B2B consulting platform with 10 specialist agents — is now listed as a specialist developer partner on the 2nth.ai developer portal. Contributing skills across <code>mkt/go-to-market</code>, <code>biz/sales/*</code>, and <code>mkt/demand-gen</code>.</p>
+      <div style="margin-top:8px;display:flex;gap:16px;flex-wrap:wrap">
+        <a href="https://developers.2nth.ai/partners/b2bs-ai.html" class="update-link">Partner page &rarr;</a>
+        <a href="https://ai.b2bs.co.za" class="update-link">ai.b2bs.co.za &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Platform update — Partner terms -->
+    <div class="update-compact" data-category="platform">
+      <div class="update-date">
+        <span class="badge badge-platform">Platform</span>
+      </div>
+      <h3>Partner Agreement &amp; Terms v1.0 published</h3>
+      <p>Formalised the partner programme with a 14-section agreement covering IP ownership (partner retains), revenue sharing (5-30% in ZAR), skill contribution standards, POPIA compliance, termination terms, and dispute resolution. Includes a self-service agreement generator for onboarding.</p>
+      <div style="margin-top:8px;display:flex;gap:16px;flex-wrap:wrap">
+        <a href="https://2nth.ai/partner-terms.html" class="update-link">View terms &rarr;</a>
+        <a href="https://2nth.ai/partner-agreement.html" class="update-link">Generate agreement &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- ADD NEW DAYS ABOVE THIS LINE                                -->
+  <!-- Copy the day-group template:                                -->
+  <!--                                                             -->
+  <!--   <div class="day-group" data-date="YYYY-MM-DD">           -->
+  <!--     <div class="day-marker">D Month YYYY</div>             -->
+  <!--     ... update cards ...                                    -->
+  <!--   </div>                                                    -->
+  <!--                                                             -->
+  <!-- Use .update for feature items, .update-compact for briefs   -->
+  <!-- data-category: model | platform | partner | research        -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+
+</div>
+</div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>Imbila.AI — the thinking behind <a href="https://2nth.ai">2nth.ai</a>. <a href="https://github.com/imbila-ai">GitHub</a></p>
+  </div>
+</footer>
+
+<script>
+function filterUpdates(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.update, .update-compact').forEach(function(el) {
+    if (category === 'all' || el.dataset.category === category) {
+      el.style.display = '';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+  // Show/hide day markers if all their children are hidden
+  document.querySelectorAll('.day-group').forEach(function(group) {
+    var visible = group.querySelectorAll('.update:not([style*="display: none"]), .update-compact:not([style*="display: none"])');
+    group.style.display = visible.length ? '' : 'none';
+  });
+}
+
+// Update stats on load
+(function() {
+  var all = document.querySelectorAll('.update, .update-compact');
+  var models = document.querySelectorAll('[data-category="model"]');
+  var platform = document.querySelectorAll('[data-category="platform"]');
+  var partner = document.querySelectorAll('[data-category="partner"]');
+  document.getElementById('stat-total').textContent = all.length;
+  document.getElementById('stat-models').textContent = models.length;
+  document.getElementById('stat-platform').textContent = platform.length;
+  document.getElementById('stat-partner').textContent = partner.length;
+})();
+</script>
+
+</body>
+</html>

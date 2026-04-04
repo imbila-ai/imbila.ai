@@ -24,6 +24,7 @@
     nav{display:flex;gap:20px;align-items:center}
     nav a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);transition:color .15s}
     nav a:hover{color:var(--imbila);text-decoration:none}
+    nav a.active{color:var(--imbila)}
     .nav-cta{background:var(--imbila);color:#fff!important;padding:6px 16px;border-radius:6px;font-weight:600}
     .nav-cta:hover{background:var(--imbila-dark)}
 
@@ -82,7 +83,34 @@
     .cta .btn-outline{background:none;border:1px solid rgba(255,255,255,.25);color:#fff}
     .cta .btn-outline:hover{border-color:#fff}
 
-    @media(max-width:640px){h1{font-size:36px}.pillar{flex-direction:column}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}}
+    /* Updates */
+    .update{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px 28px 24px;margin-bottom:20px;transition:border-color .15s}
+    .update:hover{border-color:var(--imbila)}
+    .update-date{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+    .update-date .badge{font-size:9px;padding:2px 8px;border-radius:3px;letter-spacing:1px;font-weight:700}
+    .badge-model{background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.15);color:#7c3aed}
+    .badge-platform{background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.15);color:#06b6d4}
+    .badge-partner{background:rgba(15,118,110,.06);border:1px solid rgba(15,118,110,.15);color:#0f766e}
+    .badge-research{background:rgba(217,119,6,.06);border:1px solid rgba(217,119,6,.15);color:#d97706}
+    .update h3{font-size:20px;font-weight:700;color:var(--text);margin:0 0 10px;line-height:1.3}
+    .update p{font-size:14px;color:var(--text3);margin:0 0 12px;line-height:1.65}
+    .update-specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:16px 0}
+    .spec{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 12px;text-align:center}
+    .spec-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--text);line-height:1.1}
+    .spec-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:2px}
+    .update-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+    .update-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.5px;padding:3px 10px;border-radius:4px;background:rgba(15,118,110,.04);border:1px solid rgba(15,118,110,.1);color:var(--imbila)}
+    .update-table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0}
+    .update-table th,.update-table td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--border)}
+    .update-table th{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:600}
+    .update-table td{color:var(--text2)}
+    .update-table code{font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(15,118,110,.04);padding:1px 6px;border-radius:3px}
+    .update-link{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.5px;color:var(--imbila);display:inline-flex;align-items:center;gap:4px}
+    .take{background:rgba(15,118,110,.03);border:1px solid rgba(15,118,110,.1);border-radius:8px;padding:16px 20px;margin:14px 0}
+    .take p{margin:0;font-size:13px;line-height:1.6}
+    .take strong{color:var(--text)}
+
+    @media(max-width:640px){h1{font-size:36px}.pillar{flex-direction:column}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.update-specs{grid-template-columns:repeat(2,1fr)}}
   </style>
 </head>
 <body>
@@ -91,6 +119,7 @@
   <div class="container">
     <a href="/" class="logo"><span>IMBILA</span>.AI</a>
     <nav>
+      <a href="/intel.html">Daily Intel</a>
       <a href="#research">Research</a>
       <a href="#education">Education</a>
       <a href="#portfolio">Portfolio</a>
@@ -105,6 +134,46 @@
     <div class="hero-tag">AI Research & Thought Leadership</div>
     <h1>We <span>think</span>.<br>2nth.ai <span>builds</span>.</h1>
     <p>Imbila.AI is the research and intellectual property partner behind the 2nth.ai platform. We develop AI methodology, agent architecture, and education — then 2nth.ai turns it into skills, agents, and infrastructure that partners build on.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Latest Intel -->
+<div class="section" id="updates">
+  <div class="container">
+    <div class="section-tag">Latest Intel</div>
+    <h2>Daily intelligence</h2>
+    <p>What's moving in AI — model releases, platform changes, and what it means for our stack and partners.</p>
+
+    <!-- ── Latest: 4 Apr 2026 ── -->
+    <div class="update">
+      <div class="update-date">
+        4 April 2026
+        <span class="badge badge-model">Model Release</span>
+      </div>
+      <h3>Google Gemma 4: Open models go Apache 2.0 with native multimodal and 256K context</h3>
+      <p>Google DeepMind released Gemma 4 — four open-weight models (E2B, E4B, 26B MoE, 31B dense) with native multimodal, function calling, and 256K context. The big shift: <strong>Apache 2.0 licence</strong> with full commercial freedom.</p>
+
+      <div class="update-specs">
+        <div class="spec"><div class="spec-val">4</div><div class="spec-label">Model sizes</div></div>
+        <div class="spec"><div class="spec-val">256K</div><div class="spec-label">Context (26B/31B)</div></div>
+        <div class="spec"><div class="spec-val">85.2%</div><div class="spec-label">MMLU Pro (31B)</div></div>
+        <div class="spec"><div class="spec-val">#3</div><div class="spec-label">Arena AI global rank</div></div>
+      </div>
+
+      <div class="take">
+        <p><strong>Imbila take:</strong> The Apache 2.0 shift makes Gemma 4 viable for sovereign and commercial deployments. The 26B MoE hits a sweet spot for self-hosted agent workloads. We're evaluating it for cost-sensitive 2nth.ai skill executions.</p>
+      </div>
+
+      <div style="margin-top:14px">
+        <a href="/intel.html" class="update-link" style="font-size:12px;font-weight:700">Read full analysis and 3 more updates from today &rarr;</a>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:20px">
+      <a href="/intel.html" style="display:inline-block;padding:12px 28px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:700;border:1px solid var(--border);color:var(--text3);transition:all .15s">View all daily intel &rarr;</a>
+    </div>
   </div>
 </div>
 
