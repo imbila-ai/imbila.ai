@@ -1,353 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imbila.AI — AI Research & Thought Leadership</title>
-  <meta name="description" content="Imbila.AI is the research and IP partner behind 2nth.ai. AI methodology, agent architecture, education, and the thinking that powers the 2nth platform.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'Barlow',sans-serif;background:#fafafa;color:#52525b;line-height:1.7;-webkit-font-smoothing:antialiased}
-    a{color:#0f766e;text-decoration:none}a:hover{text-decoration:underline}
-    .container{max-width:960px;margin:0 auto;padding:0 24px}
-
-    /* Brand colors — warm teal, earth tones */
-    :root{--imbila:#0f766e;--imbila-light:#ccfbf1;--imbila-dark:#134e4a;--2nth:#06b6d4;--text:#18181b;--text2:#52525b;--text3:#71717a;--muted:#a1a1aa;--border:#e5e7eb;--bg:#fafafa;--bg2:#fff}
-
-    header{background:var(--bg2);border-bottom:1px solid var(--border);padding:18px 0}
-    header .container{display:flex;align-items:center;justify-content:space-between}
-    .logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.06em;color:var(--text);text-decoration:none}
-    .logo span{color:var(--imbila)}
-    nav{display:flex;gap:20px;align-items:center}
-    nav a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);transition:color .15s}
-    nav a:hover{color:var(--imbila);text-decoration:none}
-    .nav-cta{background:var(--imbila);color:#fff!important;padding:6px 16px;border-radius:6px;font-weight:600}
-    .nav-cta:hover{background:var(--imbila-dark)}
-
-    footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;font-size:12px;color:var(--muted)}
-
-    /* Hero */
-    .hero{padding:80px 0 60px;text-align:center}
-    .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:5px;background:rgba(15,118,110,.06);border:1px solid rgba(15,118,110,.15);color:var(--imbila);margin-bottom:20px}
-    h1{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:.03em;color:var(--text);line-height:1.05;margin-bottom:20px}
-    h1 span{color:var(--imbila)}
-    .hero p{font-size:19px;color:var(--text3);max-width:640px;margin:0 auto;line-height:1.6}
-
-    /* Sections */
-    .section{padding:56px 0}
-    .section-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--imbila);margin-bottom:8px}
-    h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.02em;color:var(--text);line-height:1.1;margin-bottom:14px}
-    h3{font-size:18px;font-weight:600;color:var(--text);margin:28px 0 10px}
-    .section > p{font-size:16px;color:var(--text3);margin-bottom:28px;line-height:1.6;max-width:640px}
-    .divider{border:none;border-top:1px solid var(--border);margin:0}
-
-    /* Cards */
-    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:24px 0}
-    .card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:24px;transition:border-color .15s}
-    .card:hover{border-color:var(--imbila)}
-    .card h3{margin:0 0 8px;font-size:16px}
-    .card p{font-size:13px;color:var(--text3);margin:0;line-height:1.5}
-    .card .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--imbila);margin-bottom:8px;display:inline-block}
-
-    /* Flow */
-    .flow-diagram{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:32px;margin:28px 0}
-    .flow-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:16px 0}
-    .flow-box{background:rgba(15,118,110,.04);border:1px solid rgba(15,118,110,.15);border-radius:8px;padding:14px 20px;text-align:center;flex:1;min-width:160px}
-    .flow-box h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px}
-    .flow-box p{font-size:11px;color:var(--text3);margin:0}
-    .flow-box.highlight{background:rgba(6,182,212,.04);border-color:rgba(6,182,212,.2)}
-    .flow-box.highlight h4{color:var(--2nth)}
-    .flow-arrow{font-size:20px;color:var(--muted);flex-shrink:0}
-
-    /* Pillar cards */
-    .pillar{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:16px;display:flex;gap:20px;align-items:start}
-    .pillar:hover{border-color:var(--imbila)}
-    .pillar-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
-    .pillar h3{margin:0 0 6px;font-size:17px;color:var(--text)}
-    .pillar p{font-size:14px;color:var(--text3);margin:0;line-height:1.6}
-    .pillar-links{margin-top:10px;display:flex;gap:12px;flex-wrap:wrap}
-    .pillar-link{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.5px;color:var(--imbila)}
-
-    /* CTA */
-    .cta{background:var(--imbila-dark);border-radius:16px;padding:48px;text-align:center;margin:48px 0}
-    .cta h2{color:#fff;margin-bottom:12px}
-    .cta p{color:rgba(255,255,255,.7);font-size:15px;margin-bottom:24px}
-    .cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .cta a{display:inline-block;padding:12px 28px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:700;text-decoration:none;transition:all .15s}
-    .cta .btn-primary{background:var(--2nth);color:#fff}
-    .cta .btn-primary:hover{background:#0891b2}
-    .cta .btn-outline{background:none;border:1px solid rgba(255,255,255,.25);color:#fff}
-    .cta .btn-outline:hover{border-color:#fff}
-
-    @media(max-width:640px){h1{font-size:36px}.pillar{flex-direction:column}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imbila.AI — AI thinking that moves you forward</title>
+<meta name="description" content="Imbila.AI is the AI education, consulting and IP studio behind 2nth.ai. We build AI fluency and judgment — the 4D Framework, the academies, and independent thinking. When you're ready to build, 2nth.ai is the execution platform.">
+<link rel="icon" type="image/svg+xml" href="/imbila-mark.svg">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{--font:'DM Sans',system-ui,-apple-system,sans-serif;--honey:#EDAF42;--hl:#F5C96E;--hd:#C8922F;--hdp:#A67720;--h10:rgba(237,175,66,.10);--h15:rgba(237,175,66,.15);--bk:#0A0A0A;--g9:#1F1E1E;--g8:#2A2A2A;--g7:#3D3D3D;--g6:#555;--g5:#777;--g4:#999;--g3:#BBB;--g2:#DDD;--g1:#EEE;--g05:#F5F5F5;--wh:#FAFAFA;--ok:#3A9E6B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font);color:var(--g8);background:var(--wh);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.pg{max-width:1080px;margin:0 auto;padding:0 28px}
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--g8);padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:12px}.nav-mark{width:28px;height:28px}
+.nav-name{font-size:15px;font-weight:600;color:var(--wh)}.nav-name em{font-style:normal;color:var(--honey)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--g4);transition:color .2s}.nav-links a:hover{color:var(--wh)}
+.nav-cta{padding:7px 16px!important;background:var(--honey)!important;color:var(--bk)!important;font-weight:600!important;border-radius:100px;transition:background .2s!important}.nav-cta:hover{background:var(--hl)!important}
+.mob{display:none;background:none;border:none;color:var(--wh);font-size:22px;cursor:pointer}
+@media(max-width:768px){.mob{display:block}.nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:var(--bk);flex-direction:column;padding:20px 28px;gap:14px;border-bottom:1px solid var(--g8)}.nav-links.open{display:flex}}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:12px 24px;font-size:14px;font-weight:600;font-family:var(--font);cursor:pointer;border:none;border-radius:100px;transition:all .2s}
+.btn-p{background:var(--honey);color:var(--bk)}.btn-p:hover{background:var(--hl)}
+.btn-dark{background:var(--bk);color:var(--wh)}.btn-dark:hover{background:var(--g8)}
+.btn-g{background:transparent;color:var(--wh);border:1px solid var(--g7)}.btn-g:hover{border-color:var(--g5)}
+.hero{background:var(--wh);color:var(--bk);padding:72px 28px 64px;position:relative;overflow:hidden;border-bottom:1px solid var(--g1)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 55% at 72% 28%,rgba(237,175,66,.10) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--hd);margin-bottom:22px}
+.eyebrow::before{content:'';width:28px;height:2px;background:var(--honey)}
+.hero h1{font-size:clamp(34px,5.5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:18px;max-width:760px;color:var(--bk)}
+.hero h1 em{font-style:normal;color:var(--honey)}
+.hero-sub{font-size:18px;color:var(--g6);max-width:600px;margin-bottom:14px;line-height:1.6}
+.hero-tag{font-size:14px;color:var(--g5);max-width:600px;margin-bottom:30px;font-weight:500}
+.hero-act{display:flex;gap:10px;flex-wrap:wrap}
+.sect{padding:64px 0}.sect-b{border-bottom:1px solid var(--g1)}.sect-grey{background:var(--g05)}.sect-dark{background:var(--bk);color:var(--wh)}
+.label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--hd);margin-bottom:8px}
+h2{font-size:clamp(26px,3.5vw,32px);font-weight:700;line-height:1.18;letter-spacing:-.02em;margin-bottom:8px;color:var(--bk)}
+.sect-dark h2{color:var(--wh)}.sect-dark .label{color:var(--honey)}
+.sdesc{font-size:16px;color:var(--g6);max-width:60ch;margin-bottom:36px;line-height:1.65}
+.sect-dark .sdesc{color:var(--g4)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.grid3{grid-template-columns:1fr}}
+.card{border:1px solid var(--g1);border-radius:14px;padding:28px;background:var(--wh);transition:all .2s}
+.card:hover{border-color:var(--honey);box-shadow:0 6px 28px rgba(237,175,66,.08);transform:translateY(-2px)}
+.card-ic{width:46px;height:46px;border-radius:12px;background:var(--h10);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.card h3{font-size:18px;font-weight:700;color:var(--bk);margin-bottom:6px}
+.card p{font-size:14px;color:var(--g5);line-height:1.6;max-width:none;margin-bottom:14px}
+.card-link{font-size:13px;font-weight:600;color:var(--hd)}
+.acad{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.acad{grid-template-columns:1fr}}
+.acad-card{border:1px solid var(--g1);border-radius:14px;overflow:hidden;background:var(--wh);transition:all .2s}
+.acad-card:hover{border-color:var(--honey);box-shadow:0 6px 28px rgba(237,175,66,.08);transform:translateY(-2px)}
+.acad-accent{height:4px}
+.acad-body{padding:24px}
+.acad-body .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g4);margin-bottom:8px}
+.acad-body h3{font-size:18px;font-weight:700;color:var(--bk);margin-bottom:4px}
+.acad-body p{font-size:13px;color:var(--g5);line-height:1.55;max-width:none;margin-bottom:14px}
+.fourd{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:768px){.fourd{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.fourd{grid-template-columns:1fr}}
+.d{border:1px solid var(--g1);border-radius:12px;padding:22px;background:var(--wh);text-align:center}
+.d-ic{width:44px;height:44px;border-radius:12px;background:var(--h10);color:var(--hd);font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:18px}
+.d h4{font-size:15px;font-weight:700;color:var(--bk);margin-bottom:3px}
+.d p{font-size:12.5px;color:var(--g5);line-height:1.5;max-width:none}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.split-card{border:1px solid var(--g7);border-radius:16px;padding:32px;background:var(--g9)}
+.split-card h3{color:var(--wh);font-size:20px;font-weight:700;margin-bottom:8px}
+.split-card p{color:var(--g4);font-size:14px;line-height:1.65;margin-bottom:18px;max-width:none}
+.contact-box{max-width:640px}
+.contact-note{font-size:13px;color:var(--g5);margin-top:14px}
+.cta{background:var(--bk);color:var(--wh);padding:64px 0;text-align:center}
+.cta h2{color:var(--wh)}.cta p{font-size:16px;color:var(--g4);max-width:520px;margin:0 auto 24px}
+.cta-act{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.ft{background:var(--bk);color:var(--g5);padding:40px 28px;font-size:13px}
+.ft-inner{max-width:1080px;margin:0 auto}
+.ft-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;margin-bottom:20px}
+.ft-brand{display:flex;align-items:center;gap:10px;color:var(--wh);font-weight:600;font-size:15px}.ft-brand em{font-style:normal;color:var(--honey)}
+.ft-links{display:flex;gap:18px;flex-wrap:wrap}.ft-links a{color:var(--g5);transition:color .2s;font-size:13px}.ft-links a:hover{color:var(--wh)}
+.ft-legal{font-size:11px;color:var(--g7);border-top:1px solid var(--g8);padding-top:16px;line-height:1.6}
+</style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <a href="/" class="logo"><span>IMBILA</span>.AI</a>
-    <nav>
-      <a href="#research">Research</a>
-      <a href="#education">Education</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="https://2nth.ai" class="nav-cta">Build with 2nth.ai</a>
-    </nav>
+<nav class="nav">
+  <a href="/" class="nav-left"><img class="nav-mark" src="/imbila-mark.svg" alt="Imbila.AI"><span class="nav-name">Imbila<em>.AI</em></span></a>
+  <button class="mob" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <div class="nav-links">
+    <a href="#academies">Academies</a>
+    <a href="#framework">4D Framework</a>
+    <a href="#knowledge">Knowledge</a>
+    <a href="#contact">Contact</a>
+    <a href="https://2nth.ai" target="_blank" rel="noopener" class="nav-cta">Build on 2nth.ai &#8599;</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">AI education, consulting &amp; IP</div>
+    <h1>AI thinking that <em>moves you</em> forward.</h1>
+    <p class="hero-sub">Imbila.AI builds AI fluency and judgment &#8212; through the academies, the 4D Framework, and independent thinking. We&#8217;re the consulting &amp; IP arm to <strong>2nth.ai</strong>, the platform where that thinking becomes working software.</p>
+    <p class="hero-tag">Clarity, not chaos. Speed, not risk.</p>
+    <div class="hero-act">
+      <a href="#academies" class="btn btn-p">Explore the Academies &#8594;</a>
+      <a href="https://2nth.ai" target="_blank" rel="noopener" class="btn btn-dark">Build on 2nth.ai &#8599;</a>
+    </div>
   </div>
 </header>
 
-<!-- Hero -->
-<div class="hero">
-  <div class="container">
-    <div class="hero-tag">AI Research & Thought Leadership</div>
-    <h1>We <span>think</span>.<br>2nth.ai <span>builds</span>.</h1>
-    <p>Imbila.AI is the research and intellectual property partner behind the 2nth.ai platform. We develop AI methodology, agent architecture, and education — then 2nth.ai turns it into skills, agents, and infrastructure that partners build on.</p>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- How it works -->
-<div class="section">
-  <div class="container">
-    <div class="section-tag">The model</div>
-    <h2>From thought to motion</h2>
-    <p>Imbila.AI researches. 2nth.ai implements. Partners build. Customers benefit.</p>
-
-    <div class="flow-diagram">
-      <div class="flow-row">
-        <div class="flow-box">
-          <h4>Imbila.AI</h4>
-          <p>Research, methodology, IP</p>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-box highlight">
-          <h4>2nth.ai</h4>
-          <p>Platform, skills, agents, billing</p>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-box">
-          <h4>Partners</h4>
-          <p>Domain skills, branded hubs</p>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-box">
-          <h4>Customers</h4>
-          <p>AI-powered products & services</p>
-        </div>
-      </div>
+<section class="sect sect-b">
+<div class="pg">
+  <div class="label">01 &#183; What we do</div>
+  <h2>Learn it. Decide well. Then build.</h2>
+  <p class="sdesc">Imbila.AI is pure-play AI education and advisory. We help people and organisations become genuinely fluent with AI &#8212; and we keep our point of view independent and honest.</p>
+  <div class="grid3">
+    <div class="card">
+      <div class="card-ic">🎓</div>
+      <h3>Academies</h3>
+      <p>Self-paced AI-fluency learning across the major platforms &#8212; our interactive Claude 4D course, plus curated gateways to the best official Google and OpenAI material.</p>
+      <a href="#academies" class="card-link">See the academies &#8594;</a>
     </div>
-
-    <div class="card-grid">
-      <div class="card">
-        <div class="tag">Imbila thinks</div>
-        <h3>AI agent methodology</h3>
-        <p>How should agents compose skills? How do you version AI capabilities? What's the right abstraction for domain expertise? We research, test, and publish the patterns.</p>
-      </div>
-      <div class="card">
-        <div class="tag">2nth builds</div>
-        <h3>SKILL.md format & platform</h3>
-        <p>Imbila's research becomes the SKILL.md open format — 134 skills, 12 domains, token billing, revenue sharing. The thinking made executable.</p>
-      </div>
-      <div class="card">
-        <div class="tag">Partners ship</div>
-        <h3>Domain-specific products</h3>
-        <p>Proximity Green manages shared spaces. AgileX runs recruitment. DroneScan scans warehouses. Each built on methodology that started at Imbila.</p>
-      </div>
+    <div class="card">
+      <div class="card-ic">🧭</div>
+      <h3>Consulting &amp; IP</h3>
+      <p>The 4D AI-Fluency Framework, advisory, and AI-readiness work &#8212; helping teams decide where AI adds genuine value and adopt it responsibly.</p>
+      <a href="#contact" class="card-link">Work with us &#8594;</a>
+    </div>
+    <div class="card">
+      <div class="card-ic">📚</div>
+      <h3>Knowledge</h3>
+      <p>Independent, fact-checked explainers, framework guides, and decision tools &#8212; published openly on know.2nth.ai. Signal, not hype.</p>
+      <a href="#knowledge" class="card-link">Explore the knowledge base &#8594;</a>
     </div>
   </div>
 </div>
+</section>
 
-<hr class="divider">
-
-<!-- Research -->
-<div class="section" id="research">
-  <div class="container">
-    <div class="section-tag">Research</div>
-    <h2>What we're working on</h2>
-    <p>Our research informs every skill, agent, and platform decision at 2nth.ai.</p>
-
-    <div class="pillar">
-      <div class="pillar-icon" style="background:rgba(15,118,110,.06)">&#129302;</div>
-      <div>
-        <h3>Agent architecture patterns</h3>
-        <p>How autonomous agents should compose, communicate, and hand off work. Multi-agent collaboration with human-in-the-loop approval gates. The thinking behind Penny and the 15 domain agents at 2nth.ai.</p>
-        <div class="pillar-links">
-          <a href="https://2nth.ai" class="pillar-link">See it in action at 2nth.ai &rarr;</a>
-        </div>
+<section class="sect sect-grey sect-b" id="academies">
+<div class="pg">
+  <div class="label">02 &#183; The Academies</div>
+  <h2>Become AI-fluent &#8212; on the platform you use</h2>
+  <p class="sdesc">Each academy opens with an AI advisor that builds you a personalised, grounded learning path. Start anywhere.</p>
+  <div class="acad">
+    <a class="acad-card" href="https://claude.imbila.ai">
+      <div class="acad-accent" style="background:var(--honey)"></div>
+      <div class="acad-body">
+        <div class="k">Flagship &#183; Interactive</div>
+        <h3>Claude Academy</h3>
+        <p>Our own interactive 4D AI-Fluency course &#8212; lessons, an AI tutor, assessments, and the official Anthropic materials.</p>
+        <span class="card-link">Start the 4D course &#8594;</span>
       </div>
+    </a>
+    <a class="acad-card" href="https://google.imbila.ai">
+      <div class="acad-accent" style="background:linear-gradient(90deg,#4285F4,#EA4335,#FBBC04,#34A853)"></div>
+      <div class="acad-body">
+        <div class="k">Curated gateway</div>
+        <h3>Google AI Academy</h3>
+        <p>A guided path through Google&#8217;s best official material &#8212; Gemini, AI Studio, NotebookLM, Google Skills.</p>
+        <span class="card-link">Explore Google AI &#8594;</span>
+      </div>
+    </a>
+    <a class="acad-card" href="https://openai.imbila.ai">
+      <div class="acad-accent" style="background:#10A37F"></div>
+      <div class="acad-body">
+        <div class="k">Curated gateway</div>
+        <h3>OpenAI Academy</h3>
+        <p>A guided path through the OpenAI Academy, ChatGPT, the API, Cookbook and Agents SDK.</p>
+        <span class="card-link">Explore OpenAI &#8594;</span>
+      </div>
+    </a>
+  </div>
+</div>
+</section>
+
+<section class="sect sect-b" id="framework">
+<div class="pg">
+  <div class="label">03 &#183; Our signature IP</div>
+  <h2>The 4D AI-Fluency Framework</h2>
+  <p class="sdesc">Working with AI well comes down to four competencies. They&#8217;re the backbone of everything we teach and advise on &#8212; based on the framework by Prof. Joseph Feller &amp; Prof. Rick Dakan, in partnership with Anthropic.</p>
+  <div class="fourd">
+    <div class="d"><div class="d-ic">De</div><h4>Delegation</h4><p>Deciding what to give AI, what to keep, and what to do together.</p></div>
+    <div class="d"><div class="d-ic">De</div><h4>Description</h4><p>Communicating with AI to get high-quality results.</p></div>
+    <div class="d"><div class="d-ic">Di</div><h4>Discernment</h4><p>Critically evaluating AI output &#8212; accurate vs plausible-but-wrong.</p></div>
+    <div class="d"><div class="d-ic">Di</div><h4>Diligence</h4><p>Using AI ethically, accurately, and responsibly.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="sect sect-dark sect-b" id="knowledge">
+<div class="pg">
+  <div class="label">04 &#183; Knowledge &amp; execution</div>
+  <h2>Independent thinking &#8212; and where to build it</h2>
+  <p class="sdesc">We publish what we learn, openly. And when learning turns into building, there&#8217;s a clear next step.</p>
+  <div class="split">
+    <div class="split-card">
+      <h3>Read the thinking</h3>
+      <p>Fact-checked explainers and framework guides on the AI agent stacks (Claude, GPT, Gemini), infrastructure, and more &#8212; on the 2nth.ai knowledge base.</p>
+      <a href="https://know.2nth.ai/explainers/agents/" target="_blank" rel="noopener" class="btn btn-p">Explore know.2nth.ai &#8599;</a>
     </div>
-
-    <div class="pillar">
-      <div class="pillar-icon" style="background:rgba(6,182,212,.06)">&#128218;</div>
-      <div>
-        <h3>SKILL.md — the open skill format</h3>
-        <p>Inspired by the claude.skills movement. A standardised way to package AI domain expertise as versioned, composable, dependency-resolving units. YAML frontmatter, structured markdown, automatic skill tree resolution.</p>
-        <div class="pillar-links">
-          <a href="https://github.com/2nth-ai/skills" class="pillar-link">134 skills on GitHub &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pillar">
-      <div class="pillar-icon" style="background:rgba(124,58,237,.06)">&#127760;</div>
-      <div>
-        <h3>Edge-first AI infrastructure</h3>
-        <p>Running AI at the edge on Cloudflare Workers — not in centralised clouds. D1 for data, KV for sessions, Workers AI for inference, R2 for storage. The architecture that makes 2nth.ai fast, affordable, and globally distributed.</p>
-        <div class="pillar-links">
-          <a href="https://dev.2nth-skills-hub.pages.dev/tech/" class="pillar-link">16 Cloudflare skills &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pillar">
-      <div class="pillar-icon" style="background:rgba(217,119,6,.06)">&#127466;&#127462;</div>
-      <div>
-        <h3>Africa-first AI economics</h3>
-        <p>How to price AI capabilities in ZAR, not USD. Token-based billing that works for South African businesses. POPIA-compliant data residency. Revenue sharing that makes AI accessible, not extractive.</p>
-        <div class="pillar-links">
-          <a href="https://developers-2nth-ai.pages.dev/vision.html" class="pillar-link">Read the vision &rarr;</a>
-        </div>
-      </div>
+    <div class="split-card">
+      <h3>Build the software</h3>
+      <p>Imbila is the thinking; <strong style="color:var(--wh)">2nth.ai</strong> is the doing &#8212; the execution platform for working software and the agents built on it. When you&#8217;re ready to ship, that&#8217;s the jumping-off point.</p>
+      <a href="https://2nth.ai" target="_blank" rel="noopener" class="btn btn-g">Go to 2nth.ai &#8599;</a>
     </div>
   </div>
 </div>
+</section>
 
-<hr class="divider">
+<section class="sect sect-grey sect-b" id="contact">
+<div class="pg contact-box">
+  <div class="label">Get in touch</div>
+  <h2>Work with Imbila</h2>
+  <p class="sdesc">AI fluency training, the 4D Framework, AI-readiness and advisory. Tell us what you&#8217;re trying to do.</p>
+  <!-- HubSpot enquiry form · portal 48288371 · region na1 -->
+  <div class="hs-form-frame" data-region="na1" data-form-id="b8133ee6-5e65-4f06-8b68-dea56dbc769d" data-portal-id="48288371"></div>
+  <p class="contact-note">Or email <a href="mailto:hello@imbila.ai" style="color:var(--hd);font-weight:600">hello@imbila.ai</a>.</p>
+</div>
+</section>
 
-<!-- Education -->
-<div class="section" id="education">
-  <div class="container">
-    <div class="section-tag">Education</div>
-    <h2>Teaching AI to Africa</h2>
-    <p>We believe AI capability should be distributed, not concentrated. Our education initiatives make AI skills accessible.</p>
-
-    <div class="card-grid">
-      <div class="card">
-        <div class="tag">Free platform</div>
-        <h3>Baobab</h3>
-        <p>Free AI education for every African student. From first prompt to production agent. Named for the tree that gives shade to everyone.</p>
-      </div>
-      <div class="card">
-        <div class="tag">Courses</div>
-        <h3>Claude mastery</h3>
-        <p>Structured training on Claude — from prompting to Claude Code to building production AI agents. Used to train 2nth.ai partners and developers.</p>
-      </div>
-      <div class="card">
-        <div class="tag">Knowledge base</div>
-        <h3>know.imbila.ai</h3>
-        <p>Deep-dive articles on AI methodology, agent patterns, skill architecture, and the decisions behind the 2nth.ai platform.</p>
-      </div>
-    </div>
+<section class="cta">
+<div class="pg">
+  <h2>Start with <span style="color:var(--honey)">fluency</span>.</h2>
+  <p>Learn to work with AI effectively, efficiently, ethically and safely &#8212; then build with confidence.</p>
+  <div class="cta-act">
+    <a href="https://claude.imbila.ai" class="btn btn-p">Start the Claude 4D Academy &#8594;</a>
+    <a href="#contact" class="btn btn-g">Work with Imbila &#8594;</a>
   </div>
 </div>
+</section>
 
-<hr class="divider">
+<footer class="ft"><div class="ft-inner"><div class="ft-top"><div class="ft-brand"><img src="/imbila-mark.svg" alt="Imbila" style="width:24px;height:24px"><span>Imbila<em>.AI</em></span></div><div class="ft-links"><a href="https://claude.imbila.ai">Claude Academy</a><a href="https://google.imbila.ai">Google AI</a><a href="https://openai.imbila.ai">OpenAI Academy</a><a href="https://know.2nth.ai/explainers/agents/" target="_blank" rel="noopener">Knowledge</a><a href="https://2nth.ai" target="_blank" rel="noopener">2nth.ai</a><a href="#contact">Contact</a></div></div><div class="ft-legal">Imbila.AI is an independent AI education, consulting &amp; IP studio &#8212; the thinking arm to the 2nth.ai execution platform. The 4D AI-Fluency Framework was developed by Prof. Joseph Feller and Prof. Rick Dakan in partnership with Anthropic. &copy; 2026 Imbila.AI</div></div></footer>
 
-<!-- Portfolio -->
-<div class="section" id="portfolio">
-  <div class="container">
-    <div class="section-tag">Portfolio</div>
-    <h2>What we've built</h2>
-    <p>Everything Imbila researches gets built on the 2nth.ai platform.</p>
-
-    <div class="card-grid">
-      <a href="https://2nth.ai" class="card" style="text-decoration:none">
-        <div class="tag" style="color:#06b6d4">Platform</div>
-        <h3 style="color:var(--text)">2nth.ai</h3>
-        <p>AI agent platform with 134 skills, 12 domains, token billing, partner hubs. The commercial execution of Imbila's research.</p>
-      </a>
-      <a href="https://dev.2nth-skills-hub.pages.dev" class="card" style="text-decoration:none">
-        <div class="tag" style="color:#06b6d4">Skills</div>
-        <h3 style="color:var(--text)">Skills Hub</h3>
-        <p>Browse 134 AI skills across tech, business, marketing, data, IoT, health, legal, finance, property, and collaboration.</p>
-      </a>
-      <a href="https://developers-2nth-ai.pages.dev/vision.html" class="card" style="text-decoration:none">
-        <div class="tag" style="color:#7c3aed">Developers</div>
-        <h3 style="color:var(--text)">Developer portal</h3>
-        <p>Partner onboarding, skill contributions, revenue sharing, and the vision for how developers, business, and designers build with AI.</p>
-      </a>
-    </div>
-
-    <h3>Partners powered by our research</h3>
-    <div class="card-grid">
-      <div class="card">
-        <div class="tag">Shared spaces</div>
-        <h3>Proximity Green</h3>
-        <p>Multi-tenant operations for coworking, student accommodation, corporate campuses. SA, Rwanda, Mauritius.</p>
-      </div>
-      <div class="card">
-        <div class="tag">Recruitment</div>
-        <h3>AgileX</h3>
-        <p>5 autonomous AI recruitment agents. CV parsing, AI interviews, EE compliance, scheduling, onboarding.</p>
-      </div>
-      <div class="card">
-        <div class="tag">Inventory</div>
-        <h3>DroneScan</h3>
-        <p>Drone-powered warehouse inventory management with AI anomaly detection. Featured by CNN, Forbes.</p>
-      </div>
-      <div class="card">
-        <div class="tag">Warehouse</div>
-        <h3>ScanMan</h3>
-        <p>Warehouse management software building AI skills for stock accuracy, shelf life, and pick optimisation.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- About -->
-<div class="section">
-  <div class="container">
-    <div class="section-tag">About</div>
-    <h2>Who we are</h2>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0">
-      <div>
-        <h3 style="margin-top:0">The company</h3>
-        <p>Imbila.AI is a South African AI research company. We develop methodology, architecture, and education for AI agent systems. Our work powers the 2nth.ai platform and its partner ecosystem.</p>
-        <p>Founded by Craig Leppan. Based in South Africa. Building for the world.</p>
-      </div>
-      <div>
-        <h3 style="margin-top:0">The name</h3>
-        <p><strong>Imbila</strong> is a Zulu word meaning "rock hyrax" — a small, unassuming animal found across Southern Africa. Despite its size, it's the closest living relative of the elephant. Intelligence doesn't need to be large to be powerful.</p>
-        <p>That's our philosophy: small, focused AI capabilities that compose into something much larger than the sum of their parts.</p>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:24px">
-      <h3 style="margin-top:0;text-align:center">Where we operate</h3>
-      <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:12px">
-        <div style="text-align:center"><div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text)">South Africa</div><div style="font-size:12px;color:var(--muted)">HQ, research, data residency</div></div>
-        <div style="text-align:center"><div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text)">Rwanda</div><div style="font-size:12px;color:var(--muted)">Partner operations</div></div>
-        <div style="text-align:center"><div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text)">Mauritius</div><div style="font-size:12px;color:var(--muted)">Partner operations</div></div>
-        <div style="text-align:center"><div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--imbila)">Global</div><div style="font-size:12px;color:var(--muted)">Skills & agents work anywhere</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="container">
-  <div class="cta">
-    <h2>Ready to build?</h2>
-    <p>Start with 50,000 free tokens on the 2nth.ai platform. Or read our research first.</p>
-    <div class="cta-buttons">
-      <a href="https://2nth.ai" class="btn-primary">Build on 2nth.ai</a>
-      <a href="https://developers-2nth-ai.pages.dev/vision.html" class="btn-outline">Read the vision</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <div class="container">
-    <p>Imbila.AI — the thinking behind <a href="https://2nth.ai">2nth.ai</a>. <a href="https://github.com/imbila-ai">GitHub</a></p>
-  </div>
-</footer>
+<script src="https://js.hsforms.net/forms/embed/48288371.js" defer></script>
 
 </body>
 </html>
