@@ -248,6 +248,7 @@ h2{font-size:clamp(26px,3.5vw,32px);font-weight:700;line-height:1.18;letter-spac
     <label>Tell us what you&#8217;re trying to do<textarea name="message" rows="4" required maxlength="5000"></textarea></label>
     <label class="cf-check"><input type="checkbox" name="consent" value="yes"> Send me occasional news and insights. I can unsubscribe at any time.</label>
     <input class="cf-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAFZCPG2NUVHxHdb4" data-theme="light" data-size="flexible"></div>
     <button class="btn btn-p" type="submit">Send &#8594;</button>
     <p class="cf-status" data-crm-status hidden></p>
   </form>
@@ -268,6 +269,7 @@ h2{font-size:clamp(26px,3.5vw,32px);font-weight:700;line-height:1.18;letter-spac
 
 <footer class="ft"><div class="ft-inner"><div class="ft-top"><div class="ft-brand"><img src="/imbila-mark.svg" alt="Imbila" style="width:24px;height:24px"><span>Imbila<em>.AI</em></span></div><div class="ft-links"><a href="https://claude.imbila.ai">Claude Academy</a><a href="https://google.imbila.ai">Google AI</a><a href="https://openai.imbila.ai">OpenAI Academy</a><a href="https://know.2nth.ai/explainers/agents/" target="_blank" rel="noopener">Knowledge</a><a href="https://2nth.ai" target="_blank" rel="noopener">2nth.ai</a><a href="#contact">Contact</a></div></div><div class="ft-legal">Imbila.AI is an independent AI education, consulting &amp; IP studio &#8212; the thinking arm to the 2nth.ai execution platform. The 4D AI-Fluency Framework was developed by Prof. Joseph Feller and Prof. Rick Dakan in partnership with Anthropic. &copy; 2026 Imbila.AI</div></div></footer>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="/crm-form.js" defer></script>
 
 </body>
