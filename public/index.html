@@ -82,6 +82,16 @@ h2{font-size:clamp(26px,3.5vw,32px);font-weight:700;line-height:1.18;letter-spac
 .ft-brand{display:flex;align-items:center;gap:10px;color:var(--wh);font-weight:600;font-size:15px}.ft-brand em{font-style:normal;color:var(--honey)}
 .ft-links{display:flex;gap:18px;flex-wrap:wrap}.ft-links a{color:var(--g5);transition:color .2s;font-size:13px}.ft-links a:hover{color:var(--wh)}
 .ft-legal{font-size:11px;color:var(--g7);border-top:1px solid var(--g8);padding-top:16px;line-height:1.6}
+.cf{display:grid;gap:14px;margin-top:22px;max-width:640px;text-align:left}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.cf-row{grid-template-columns:1fr}}
+.cf label{display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--g7)}
+.cf input,.cf select,.cf textarea{font:16px var(--font);color:var(--bk);background:var(--wh);border:1px solid var(--g2);border-radius:10px;padding:11px 13px;width:100%}
+.cf input:focus,.cf select:focus,.cf textarea:focus{outline:2px solid var(--h15);border-color:var(--honey)}
+.cf .cf-check{display:flex;gap:10px;align-items:flex-start;font-weight:400;color:var(--g6)}.cf .cf-check input{width:auto;margin-top:3px}
+.cf-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cf button{justify-self:start}.cf button:disabled{opacity:.6;cursor:wait}
+.cf-status{font-size:14px;color:var(--g6)}.cf-status.bad{color:#B42318}
+.cf-done{margin-top:22px;max-width:640px;padding:18px 20px;border:1px solid var(--honey);border-radius:12px;background:var(--h10);color:var(--g8);text-align:left}
 </style>
 </head>
 <body>
@@ -215,8 +225,33 @@ h2{font-size:clamp(26px,3.5vw,32px);font-weight:700;line-height:1.18;letter-spac
   <div class="label">Get in touch</div>
   <h2>Work with Imbila</h2>
   <p class="sdesc">AI fluency training, the 4D Framework, AI-readiness and advisory. Tell us what you&#8217;re trying to do.</p>
-  <!-- HubSpot enquiry form · portal 48288371 · region na1 -->
-  <div class="hs-form-frame" data-region="na1" data-form-id="b8133ee6-5e65-4f06-8b68-dea56dbc769d" data-portal-id="48288371"></div>
+  <!-- Enquiries go to the 2nth CRM (crm-form.js) -->
+  <form class="cf" data-crm-form action="https://crm.2nth.app/v1/leads/forms/imbila-contact" method="post">
+    <div class="cf-row">
+      <label>First name<input name="first_name" autocomplete="given-name" required maxlength="80"></label>
+      <label>Last name<input name="last_name" autocomplete="family-name" maxlength="80"></label>
+    </div>
+    <div class="cf-row">
+      <label>Email<input name="email" type="email" autocomplete="email" required maxlength="254"></label>
+      <label>Company (optional)<input name="company" autocomplete="organization" maxlength="160"></label>
+    </div>
+    <label>What are you looking for?
+      <select name="interest" required>
+        <option value="" disabled selected>Choose one</option>
+        <option>AI fluency training</option>
+        <option>The 4D Framework</option>
+        <option>AI-readiness assessment</option>
+        <option>Advisory</option>
+        <option>Something else</option>
+      </select>
+    </label>
+    <label>Tell us what you&#8217;re trying to do<textarea name="message" rows="4" required maxlength="5000"></textarea></label>
+    <label class="cf-check"><input type="checkbox" name="consent" value="yes"> Send me occasional news and insights. I can unsubscribe at any time.</label>
+    <input class="cf-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn btn-p" type="submit">Send &#8594;</button>
+    <p class="cf-status" data-crm-status hidden></p>
+  </form>
+  <div class="cf-done" data-crm-done hidden><strong>Thanks, it&#8217;s on its way.</strong> We&#8217;ll reply by email, usually within a working day.</div>
 </div>
 </section>
 
@@ -233,7 +268,7 @@ h2{font-size:clamp(26px,3.5vw,32px);font-weight:700;line-height:1.18;letter-spac
 
 <footer class="ft"><div class="ft-inner"><div class="ft-top"><div class="ft-brand"><img src="/imbila-mark.svg" alt="Imbila" style="width:24px;height:24px"><span>Imbila<em>.AI</em></span></div><div class="ft-links"><a href="https://claude.imbila.ai">Claude Academy</a><a href="https://google.imbila.ai">Google AI</a><a href="https://openai.imbila.ai">OpenAI Academy</a><a href="https://know.2nth.ai/explainers/agents/" target="_blank" rel="noopener">Knowledge</a><a href="https://2nth.ai" target="_blank" rel="noopener">2nth.ai</a><a href="#contact">Contact</a></div></div><div class="ft-legal">Imbila.AI is an independent AI education, consulting &amp; IP studio &#8212; the thinking arm to the 2nth.ai execution platform. The 4D AI-Fluency Framework was developed by Prof. Joseph Feller and Prof. Rick Dakan in partnership with Anthropic. &copy; 2026 Imbila.AI</div></div></footer>
 
-<script src="https://js.hsforms.net/forms/embed/48288371.js" defer></script>
+<script src="/crm-form.js" defer></script>
 
 </body>
 </html>
